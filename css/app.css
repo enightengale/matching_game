@@ -25,7 +25,7 @@ h1 {
 
   width: 50%;
   margin: auto;
-  background: linear-gradient(to bottom, #007a99 8%, #00ff99 115%);
+  background: linear-gradient(to bottom, #e8c0a9 8%, rgb(76, 47, 30) 115%);
   border-radius: 10px;
   box-shadow: 20px 20px 9px 0px #a2a2a2;
 
@@ -37,7 +37,7 @@ h1 {
   width: 80px;
   height: 70px;
   margin: 5%;
-  background: #afeaf9;
+  background: #007a99;
   border-radius: 10px;
 
 }
