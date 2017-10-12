@@ -4,11 +4,15 @@
 
 }
 
+body{
+  margin-bottom: 10%;
+}
+
 h1 {
 
   text-align: center;
-  color: #007a99;
-  margin-top: 10%;
+  color: #191654;
+  margin-top: 3%;
 
 }
 
@@ -17,27 +21,50 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   margin-left: 9%;
+  perspective: 1000;
 
 }
 
 .container {
 
-
   width: 50%;
   margin: auto;
-  background: linear-gradient(to bottom, #e8c0a9 8%, rgb(76, 47, 30) 115%);
+  background: #43C6AC;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #191654, #43C6AC);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #191654, #43C6AC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   border-radius: 10px;
   box-shadow: 20px 20px 9px 0px #a2a2a2;
 
 }
 
+
 .col-2 {
 
+  padding-top: 30px;
+  padding-bottom: 5px;
   text-align: center;
+  text-decoration: none;
   width: 80px;
   height: 70px;
   margin: 5%;
-  background: #007a99;
+  background: black;
   border-radius: 10px;
+  vertical-align: top;
+  z-index: 0;
+  font-size: -webkit-xxx-large;
+
+}
+
+.fade {
+
+  background-color: rgb(255, 235, 59);
+
+}
+
+.z-index {
+
+  color: #43C6AC;
+  z-index: 1;
 
 }
