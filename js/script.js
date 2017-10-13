@@ -13,15 +13,14 @@ let moves_in_game = 0;
 
 
 
-//on click listener function for boxes
+//function for boxes that determines matches
 function handler(e){
   moves_in_game = moves_in_game + 1;
   moves.innerHTML = moves_in_game;
   clicked = clicked + 1;
   var value = this.innerHTML;
   values.push(value);
-  var this_box = e;
-  clicked_boxes.push(this_box);
+
 
   if(clicked === 2){
     $(this).addClass("fade z-index");
@@ -35,10 +34,12 @@ function handler(e){
   }
 }
 
-
+//adds eventListener for boxes
 var box_clicked = function(box){
 
   box.addEventListener("click", handler, true);
+  var this_box = box;
+  clicked_boxes.push(this_box);
 
 }
 
@@ -77,8 +78,8 @@ var a_match = function(box) {
   var fade_out_two = clicked_boxes[match_two];
 
   if(x === y){
-    fade_out.removeEventListener("click", handler, true);
-    fade_out_two.removeEventListener("click", handler, true);
+    fade_out.removeEventListener("click", handler, false);
+    fade_out_two.removeEventListener("click", handler, false);
     $(fade_out).addClass("matched");
     $(fade_out_two).addClass("matched");
   }
