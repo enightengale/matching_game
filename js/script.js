@@ -1,29 +1,48 @@
 let parent = document.querySelector(".father");
 var box_click = document.querySelector(".col-2");
+var matched = document.querySelector(".matched");
 const num_of_boxes = 16;
 let boxes;
 var symbols = [2, 3, 3, 2, 1, 1, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 let clicked = -1;
 var values = [];
+var clicked_boxes = [];
+
+var moves = document.querySelector("span");
+let moves_in_game = 0;
 
 
 
-//on click listener function for squares
-var box_clicked = function(box){
-  box.addEventListener("click", function(){
-    clicked = clicked + 1;
-    var value = this.innerHTML;
-    values.push(value);
-    if(clicked === 2){
-      twoClicked();
-    }
-    console.log(clicked);
+//on click listener function for boxes
+function handler(e){
+  moves_in_game = moves_in_game + 1;
+  moves.innerHTML = moves_in_game;
+  clicked = clicked + 1;
+  var value = this.innerHTML;
+  values.push(value);
+  var this_box = e;
+  clicked_boxes.push(this_box);
+
+  if(clicked === 2){
     $(this).addClass("fade z-index");
-  });
+    twoClicked();
+  }
+
+  $(this).addClass("fade z-index");
+
+  if(clicked === 1 && a_match()){
+
+  }
 }
 
 
-//creates the boxes and adds classes and event listeners to them.
+var box_clicked = function(box){
+
+  box.addEventListener("click", handler, true);
+
+}
+
+//creates the boxes and adds classes, numbers, and event listeners to them.
 for(let i = 0; i < num_of_boxes; i++){
   var symbol = symbols[Math.floor(Math.random() * symbols.length)];
 
@@ -36,21 +55,31 @@ for(let i = 0; i < num_of_boxes; i++){
 }
 
 
+
 //a function that doesn't allow users to see more than two squares!
 var twoClicked = function(){
   $("div").removeClass("fade z-index");
   clicked = 0;
   var third_value = values.pop(2);
-  console.log(values);
-
-    var x = values.indexOf(0);
-    var y = values.indexOf(1);
-    alert(x);// this alerts -1
-    alert(y);// this alerts -1
-
-    //if x and y equal then alert "A MATCH"
 
   values = [];
   values.push(third_value);
 
+}
+
+//DECTECTS A MATCH IN THE GAME
+var a_match = function(box) {
+  var x = values[0];
+  var y = values[1];
+  var match_one = clicked_boxes.length - 1;
+  var match_two = clicked_boxes.length - 2;
+  var fade_out = clicked_boxes[match_one];
+  var fade_out_two = clicked_boxes[match_two];
+
+  if(x === y){
+    fade_out.removeEventListener("click", handler, true);
+    fade_out_two.removeEventListener("click", handler, true);
+    $(fade_out).addClass("matched");
+    $(fade_out_two).addClass("matched");
+  }
 }

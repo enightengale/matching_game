@@ -5,15 +5,19 @@
 }
 
 body{
+  margin-top: -2%;
   margin-bottom: 10%;
 }
 
 h1 {
 
-  text-align: center;
-  color: #191654;
-  margin-top: 3%;
 
+}
+section {
+  color: #191654;
+  display: unset;
+  margin-left: 40%;
+  text-align: center;
 }
 
 .father {
@@ -21,7 +25,6 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   margin-left: 9%;
-  perspective: 1000;
 
 }
 
@@ -53,6 +56,13 @@ h1 {
   vertical-align: top;
   z-index: 0;
   font-size: -webkit-xxx-large;
+
+}
+
+.matched{
+
+  transition: background-color 1.5s ease;
+  background: rgba(6, 6, 6, 0.21);
 
 }
 
