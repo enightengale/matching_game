@@ -1,25 +1,24 @@
 let parent = document.querySelector(".father");
-var box_click = document.querySelector(".col-2");
-var matched = document.querySelector(".matched");
+let box_click = document.querySelector(".col-2");
+let matched = document.querySelector(".matched");
 const num_of_boxes = 16;
 let boxes;
-var symbols = [13, 13, 3, 3, 1, 1, 4, 4, 5, 5, 10, 10, 7, 7, 8, 8];
+let symbols = [13, 13, 3, 3, 1, 1, 4, 4, 5, 5, 10, 10, 7, 7, 8, 8];
 let clicked = -1;
-var values = [];
-var clicked_boxes = [];
-var moves = document.querySelector(".move");
+let values = [];
+let clicked_boxes = [];
+let moves = document.querySelector(".move");
 let moves_in_game = 0;
-var final_moves = 0;
-var correct_boxes = [];
-var cards;
-var icon = $("i");
-var button_two = $(".button2");
+let correct_boxes = [];
+let cards;
+let icon = $("i");
+let button_two = $(".button2");
 
 
 
 //shuffle array of numbers got this from stackoverflow
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+  let currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {
@@ -37,13 +36,13 @@ function shuffle(array) {
   return array;
 }
 
-var create_shuffle_cards = function(){
+let create_shuffle_cards = function(){
 
   cards = shuffle(symbols);
     for(var i = 0; i < cards.length; i++){
       boxes = document.createElement("div");
       $(boxes).addClass("col-2");
-      $(boxes).attr('id', 'card'+(i+1));
+      $(boxes).attr("id", "card"+(i+1));
       boxes.innerHTML = cards[i];
       parent.appendChild(boxes);
     }
