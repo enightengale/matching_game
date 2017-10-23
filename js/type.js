@@ -12,7 +12,8 @@ let moves_in_game = 0;
 var final_moves = 0;
 var correct_boxes = [];
 var cards;
-var close = document.querySelector("button");
+var icon = $("i");
+var button_two = $(".button2");
 
 
 
@@ -42,6 +43,7 @@ var create_shuffle_cards = function(){
     for(var i = 0; i < cards.length; i++){
       boxes = document.createElement("div");
       $(boxes).addClass("col-2");
+      $(boxes).attr('id', 'card'+(i+1));
       boxes.innerHTML = cards[i];
       parent.appendChild(boxes);
     }
@@ -57,16 +59,17 @@ var game = function(card){
     $(this).addClass("fade z-index");
     moves_in_game = moves_in_game + 1;
     moves.innerHTML = moves_in_game;
-    final_moves++;
+    $("p span.move").html(moves_in_game);
     clicked_boxes.push(this);
 
 
     var x = clicked_boxes[0];
     var y = clicked_boxes[1];
-
+    var x_id = $(x).attr("id");
+    var y_id = $(y).attr("id");
 
     //does x and y match? correct boxes
-    if(x.innerHTML === y.innerHTML){
+    if(x.innerHTML === y.innerHTML && x_id !== y_id ){
       correct_boxes.push(x);
       correct_boxes.push(y);
 
@@ -94,30 +97,34 @@ var game = function(card){
       }, 1000);
     }
   });
-
-
-  //restart game
-    $("i").click(function(){
-      $("div").removeClass("fade z-index wrong correct");
-      moves_in_game = 0;
-      moves.innerHTML = moves_in_game;
-      clicked_boxes = [];
-      correct_boxes = [];
-    });
 }
 
+//modal functionality**********************************
 
-//modal functionality
+
+//restart game
+  $(icon).click(function(){
+    $("#modal-reload").css("display", "block");
+    $("#content-reload").css("display", "block");
+
+    $("#close").click(function(){
+      $("#modal-reload").css("display", "none");
+      $("#content-reload").css("display", "none");
+    });
+
+    $("#reload").click(function(){
+        location.reload();
+    });
+  });
+
+$("#modal-reload").css("display", "none");
+$("#content-reload").css("display", "none");
 $(".modal-content").css("display", "none");
 $("div#modal.modal").css("display", "none");
-$("p span.move").html(final_moves);
 
-
-close.onclick = function() {
-    $("div#modal.modal").css("display", "none");
-    $(".modal-content").css("display", "none");
-}
-
+$(button_two).click(function(){
+  location.reload();
+});
 
 
 game(boxes);

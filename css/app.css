@@ -30,12 +30,11 @@ section {
 
 .container {
 
-  width: 50%;
+  width: 45%;
   margin: auto;
-  background: #43C6AC;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #191654, #43C6AC);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #191654, #43C6AC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: #1e130c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1e130c, #9a8478); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1e130c, #9a8478); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 10px;
   box-shadow: 20px 20px 9px 0px #a2a2a2;
 
@@ -69,7 +68,7 @@ section {
 
 .fade {
 
-  background-color: rgb(255, 235, 59);
+  background-color: #3F51B5;
 
 }
 
@@ -92,7 +91,7 @@ section {
 
   animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
   transform: translate3d(0, 0, 0);
-  background-color: springgreen;
+  background-color: #2aa065;
   backface-visibility: hidden;
   perspective: 1000px;
   color: white;
@@ -119,6 +118,35 @@ section {
     background-color: #fefefe;
     padding: 20px;
     width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+.button1 {
+
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor:pointer;
+
+}
+
+.button2 {
+
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor:pointer;
+
 }
 
 @keyframes shake {
