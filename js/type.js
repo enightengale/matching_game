@@ -7,12 +7,12 @@ var symbols = [13, 13, 3, 3, 1, 1, 4, 4, 5, 5, 10, 10, 7, 7, 8, 8];
 let clicked = -1;
 var values = [];
 var clicked_boxes = [];
-var moves = document.querySelector("span");
+var moves = document.querySelector(".move");
 let moves_in_game = 0;
+var final_moves = 0;
 var correct_boxes = [];
 var cards;
 var close = document.querySelector("button");
-var modal = document.querySelector("#modal")
 
 
 
@@ -57,26 +57,28 @@ var game = function(card){
     $(this).addClass("fade z-index");
     moves_in_game = moves_in_game + 1;
     moves.innerHTML = moves_in_game;
+    final_moves++;
     clicked_boxes.push(this);
 
 
     var x = clicked_boxes[0];
     var y = clicked_boxes[1];
-    
+
 
     //does x and y match? correct boxes
     if(x.innerHTML === y.innerHTML){
       correct_boxes.push(x);
       correct_boxes.push(y);
 
-      if(correct_boxes.length === 16){
-
-        $("div#modal.modal").css("display", "block");
-
-      }
-
       $(x).addClass("correct");
       $(y).addClass("correct");
+    }
+
+    if(correct_boxes.length === 16){
+
+      $("div#modal.modal").css("display", "block");
+      $(".modal-content").css("display", "block");
+
     }
 
     //reset clicked_boxes/wrong matches
@@ -99,6 +101,8 @@ var game = function(card){
       $("div").removeClass("fade z-index wrong correct");
       moves_in_game = 0;
       moves.innerHTML = moves_in_game;
+      clicked_boxes = [];
+      correct_boxes = [];
     });
 }
 
@@ -106,8 +110,12 @@ var game = function(card){
 //modal functionality
 $(".modal-content").css("display", "none");
 $("div#modal.modal").css("display", "none");
+$("p span.move").html(final_moves);
+
+
 close.onclick = function() {
-    $(modal).css("display", "none");
+    $("div#modal.modal").css("display", "none");
+    $(".modal-content").css("display", "none");
 }
 
 
