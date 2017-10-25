@@ -112,7 +112,7 @@ var game = function(card){
           $(".fa-star-o:nth-child(3)").css("color", "gold");
         }
 
-        if(moves => 19 && number_correct.length === 16){
+        if(moves > 19 && number_correct.length === 16){
           $(".fa-star-o:nth-child(1)").css("color", "gold");
           $(".fa-star-o:nth-child(2)").css("color", "gray");
           $(".fa-star-o:nth-child(3)").css("color", "gray");
