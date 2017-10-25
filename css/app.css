@@ -5,8 +5,14 @@
 }
 
 body{
+  width: 50%;
+  margin:auto;
+  min-width: 370px;
+  max-width: 2000px;
   margin-top: -2%;
   margin-bottom: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 i {
@@ -22,6 +28,7 @@ section {
 
 .father {
 
+  width: 93%;
   display: flex;
   flex-wrap: wrap;
   margin-left: 9%;
@@ -30,7 +37,8 @@ section {
 
 .container {
 
-  width: 45%;
+  width: 100%;
+
   margin: auto;
   background: #1e130c; /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #1e130c, #9a8478); /* Chrome 10-25, Safari 5.1-6 */
@@ -148,6 +156,15 @@ section {
   cursor:pointer;
 
 }
+
+.fa-refresh {
+  margin-right: 5%;
+}
+
+.fa-star-o {
+  color: gold;
+}
+
 
 @keyframes shake {
   10%, 90% {

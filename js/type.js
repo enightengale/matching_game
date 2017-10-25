@@ -53,12 +53,34 @@ var game = function(card){
 
   create_shuffle_cards();
 
+
+//Making a timer in Javascript , starting from 00:00:00
+//I found this on stackoverflow
+
+  var timer = setInterval(clock, 1000);
+  var msec = 00;
+  var sec = 00;
+  var min = 00;
+
+  function clock() {
+	   msec += 1;
+	    if (msec == 60) {
+		      sec += 1;
+		        msec = 00;
+		          if (sec == 60) {
+			             sec = 00;
+			                min += 1;
+			                   if (sec % 2 == 0) {
+				                       alert("Pair");
+			                      }
+		              }
+	        }
+	document.querySelector("#time").innerHTML = min + ":" + sec + ":" + msec;
+}
+
   //show symbol when card is clicked and increment moves in game
   $(".col-2").click(function(){
     $(this).addClass("fade z-index");
-    moves_in_game = moves_in_game + 1;
-    moves.innerHTML = moves_in_game;
-    $("p span.move").html(moves_in_game);
     clicked_boxes.push(this);
 
 
@@ -66,6 +88,45 @@ var game = function(card){
     var y = clicked_boxes[1];
     var x_id = $(x).attr("id");
     var y_id = $(y).attr("id");
+
+
+
+    //changes the star rating when user clicks on cards
+    var stars = function(moves, number_correct){
+        //if users gets no correct card matches...
+        if(moves > 1 && number_correct.length === 0){
+          $(".fa-star-o:nth-child(1)").css("color", "gray");
+          $(".fa-star-o:nth-child(2)").css("color", "gray");
+          $(".fa-star-o:nth-child(3)").css("color", "gray");
+        }
+
+        if(moves > 6 && number_correct.length === 4){
+          $(".fa-star-o:nth-child(1)").css("color", "gold");
+          $(".fa-star-o:nth-child(2)").css("color", "gold");
+          $(".fa-star-o:nth-child(3)").css("color", "gray");
+        }
+
+        if(moves - number_correct.length === 0){
+          $(".fa-star-o:nth-child(1)").css("color", "gold");
+          $(".fa-star-o:nth-child(2)").css("color", "gold");
+          $(".fa-star-o:nth-child(3)").css("color", "gold");
+        }
+
+        if(moves => 19 && number_correct.length === 16){
+          $(".fa-star-o:nth-child(1)").css("color", "gold");
+          $(".fa-star-o:nth-child(2)").css("color", "gray");
+          $(".fa-star-o:nth-child(3)").css("color", "gray");
+        }
+
+        //if users does really well matching the cards
+        if(moves <= 11 && number_correct.length === 16){
+          $(".fa-star-o:nth-child(1)").css("color", "gold");
+          $(".fa-star-o:nth-child(2)").css("color", "gold");
+          $(".fa-star-o:nth-child(3)").css("color", "gold");
+        }
+    }
+
+    stars(moves_in_game, correct_boxes);
 
     //does x and y match? correct boxes
     if(x.innerHTML === y.innerHTML && x_id !== y_id ){
@@ -76,10 +137,18 @@ var game = function(card){
       $(y).addClass("correct");
     }
 
+    //increment moves in game
+    if(clicked_boxes.length === 2){
+      moves_in_game = moves_in_game + 1;
+      moves.innerHTML = moves_in_game - 1;
+      $("p span.move").html(moves_in_game);
+    }
+
     if(correct_boxes.length === 16){
 
       $("div#modal.modal").css("display", "block");
       $(".modal-content").css("display", "block");
+      clearInterval(timer);
 
     }
 
@@ -102,7 +171,7 @@ var game = function(card){
 
 
 //restart game
-  $(icon).click(function(){
+  $(".fa-refresh").click(function(){
     $("#modal-reload").css("display", "block");
     $("#content-reload").css("display", "block");
 
@@ -124,6 +193,5 @@ $("div#modal.modal").css("display", "none");
 $(button_two).click(function(){
   location.reload();
 });
-
 
 game(boxes);
