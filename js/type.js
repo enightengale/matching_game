@@ -13,7 +13,10 @@ let correct_boxes = [];
 let cards;
 let icon = $("i");
 let button_two = $(".button2");
-let time = document.querySelector(".time");
+let timerOne = document.querySelector("#time_one");
+let timerTwo = document.querySelector("#time_two");
+let timer = [];
+timer.push(timerOne, timerTwo);
 
 
 
@@ -57,13 +60,12 @@ var game = function(card){
 
 //Making a timer in Javascript , starting from 00:00:00
 //I found this on stackoverflow
-
   var timer = setInterval(clock, 1000);
   var msec = 00;
   var sec = 00;
   var min = 00;
 
-  function clock() {
+  function clock(timer) {
 	   msec += 1;
 	    if (msec == 60) {
 		      sec += 1;
@@ -76,10 +78,10 @@ var game = function(card){
 			                      }
 		              }
 	        }
-	 time.innerHTML = min + ":" + sec + ":" + msec;
+      timerOne.innerHTML = min + ":" + sec + ":" + msec;
+      timerTwo.innerHTML = min + ":" + sec + ":" + msec;
 
 }
-
 
 
   //show symbol when card is clicked and increment moves in game
