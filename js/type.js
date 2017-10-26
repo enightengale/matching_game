@@ -13,6 +13,7 @@ let correct_boxes = [];
 let cards;
 let icon = $("i");
 let button_two = $(".button2");
+let time = document.querySelector(".time");
 
 
 
@@ -75,8 +76,11 @@ var game = function(card){
 			                      }
 		              }
 	        }
-	document.querySelector("#time").innerHTML = min + ":" + sec + ":" + msec;
+	 time.innerHTML = min + ":" + sec + ":" + msec;
+
 }
+
+
 
   //show symbol when card is clicked and increment moves in game
   $(".col-2").click(function(){
@@ -94,13 +98,7 @@ var game = function(card){
     //changes the star rating when user clicks on cards
     var stars = function(moves, number_correct){
         //if users gets no correct card matches...
-        if(moves > 1 && number_correct.length === 0){
-          $(".fa-star-o:nth-child(1)").css("color", "gray");
-          $(".fa-star-o:nth-child(2)").css("color", "gray");
-          $(".fa-star-o:nth-child(3)").css("color", "gray");
-        }
-
-        if(moves > 6 && number_correct.length === 4){
+        if(moves > 5 && number_correct.length === 0){
           $(".fa-star-o:nth-child(1)").css("color", "gold");
           $(".fa-star-o:nth-child(2)").css("color", "gold");
           $(".fa-star-o:nth-child(3)").css("color", "gray");
@@ -112,13 +110,13 @@ var game = function(card){
           $(".fa-star-o:nth-child(3)").css("color", "gold");
         }
 
-        if(moves > 19 && number_correct.length === 16){
+        if(moves >= 19){
           $(".fa-star-o:nth-child(1)").css("color", "gold");
           $(".fa-star-o:nth-child(2)").css("color", "gray");
           $(".fa-star-o:nth-child(3)").css("color", "gray");
         }
 
-        //if users does really well matching the cards
+        //if user does really well matching the cards
         if(moves <= 11 && number_correct.length === 16){
           $(".fa-star-o:nth-child(1)").css("color", "gold");
           $(".fa-star-o:nth-child(2)").css("color", "gold");
@@ -138,7 +136,7 @@ var game = function(card){
     }
 
     //increment moves in game
-    if(clicked_boxes.length === 2){
+    if(clicked_boxes.length === 2 && x_id !== y_id){
       moves_in_game = moves_in_game + 1;
       moves.innerHTML = moves_in_game - 1;
       $("p span.move").html(moves_in_game);

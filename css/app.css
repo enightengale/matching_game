@@ -165,6 +165,10 @@ section {
   color: gold;
 }
 
+.time {
+  margin-left: 5%;
+}
+
 
 @keyframes shake {
   10%, 90% {
